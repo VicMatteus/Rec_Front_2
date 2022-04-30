@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
+
+:root {
+    --primary: #7898FF;
+    --secondary: #8E64C5;
+    --app-grey: #F2F2F2;
+  }
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+background: linear-gradient(110deg, var(--primary), var(--secondary));
+height: 100vh;
+}
+
+h1{
+  text-align: center;
+  margin: 20px 0;
+}
+
+.card{
+  background-color: white;
+  border-radius: 20px;
+  margin: 0 auto;
+  height: 200px;
+  width: 50%;
+  max-width: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  text-align: center;
+}
+.card img{
+  position: relative;
+  text-align: center;
+  grid-column-start: 2;
+  grid-row-start: 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nameNode
+{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mail
+{
+  font-family: 'Courier New', Courier, monospace;
+  grid-column-start: 2;
+  grid-row-start: 3;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btnContainer{
+  padding: 20px 0;
+  text-align: center;
+}
+.btnContainer button{
+  padding: 5px 15px;
+}
