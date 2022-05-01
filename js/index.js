@@ -1,16 +1,16 @@
-// Aqui realizamos a consulta da promisse, esperando sua resposta assíncrona
-document.getElementById('random').addEventListener('click', function()
+window.onload = function()
 {
-    fetch('https://randomuser.me/api/')
+    fetch('https://randomuser.me/api/?results=9')
         .then(response => {
             return response.json()
         })
         .then(data => {
-            //manipulamos a resposta
-            console.log(data.results[0]);
-                renderizarDadosUsuario(data.results[0]);
+            data.results.forEach(element => {
+                console.log(element);
+                renderizarDadosUsuario(element);
+            });
         });
-});
+};
 
 function acoplador(elemento, node) {
     let novoElemento = document.createElement(elemento);
@@ -20,8 +20,10 @@ function acoplador(elemento, node) {
 }
 
 function renderizarDadosUsuario(dados) {
-    let container = document.querySelector('div.card');
-    container.innerHTML = '';
+    let container = document.querySelector('div.container');
+    let card = document.createElement('div');
+    card.classList.add('card')
+    card.innerHTML = '';
 
     let infoNome = dados.name;
     let nomeCompleto = infoNome.title + " " + infoNome.first + " " + infoNome.last;
@@ -36,10 +38,11 @@ function renderizarDadosUsuario(dados) {
     
     titulo.classList.add('nameNode');
     mail.classList.add('mail');
-    container.appendChild(titulo);
-    container.appendChild(img);
-    container.appendChild(mail);
+    card.appendChild(titulo);
+    card.appendChild(img);
+    card.appendChild(mail);
 
+    container.appendChild(card);
     /* -------------------------------- Tarefa 1 -------------------------------- */
     // Aqui devem desenvolver uma função que seja exibida na tela:
     // a foto, o nome completo do usuário e o e-mail.
