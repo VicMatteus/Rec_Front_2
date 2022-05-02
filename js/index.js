@@ -1,4 +1,11 @@
-window.onload = function()
+window.onload = aoCarregar()
+
+function aoCarregar(){
+    localStorage.length < 1 ? consultar() : consultaLocal();
+    document.getElementById('update').addEventListener('click', recarregar);
+};
+
+function consultar()
 {
     fetch('https://randomuser.me/api/?results=9')
         .then(response => {
@@ -6,13 +13,27 @@ window.onload = function()
         })
         .then(data => {
             data.results.forEach(element => {
-                console.log(element);
+                // console.log(element);
+                localStorage.setItem('pessoas', JSON.stringify(data.results))
                 renderizarDadosUsuario(element);
             });
         });
 };
 
-function acoplador(elemento, node) {
+function consultaLocal() {
+    let pessoas = JSON.parse(localStorage.getItem('pessoas'))
+    pessoas.forEach(pessoa => {
+        renderizarDadosUsuario(pessoa);
+    });
+}
+
+function recarregar() {
+    // localStorage.removeItem('pessoas');
+    document.querySelector('.container').innerHTML = '';
+    consultar();
+}
+
+function acoplar(elemento, node) {
     let novoElemento = document.createElement(elemento);
     let no = document.createTextNode(node);
     novoElemento.appendChild(no);
@@ -30,27 +51,36 @@ function renderizarDadosUsuario(dados) {
     let picture = dados.picture.large;
     let email = dados.email;
 
-    let titulo = acoplador('h2', nomeCompleto);
-    let mail = acoplador('p', email);
+    let titulo = acoplar('h2', nomeCompleto);
+    titulo.classList.add('nameNode');
+
+    let mail = acoplar('p', email);
+    mail.classList.add('mail');
+
 
     let img = document.createElement('img');
     img.setAttribute("src", picture);
     
-    titulo.classList.add('nameNode');
-    mail.classList.add('mail');
+    let lixeira = document.createElement('button');
+    lixeira.classList.add('lixeira')
+    lixeira.innerText = '🗑️​';
+    lixeira.addEventListener('click', function () {
+        let pessoas = JSON.parse(localStorage.getItem('pessoas'));
+        pessoas.forEach(pessoa => {
+            if(pessoa.login.uuid === dados.login.uuid)
+            {
+                remover = pessoas.indexOf(pessoa);
+            }
+        });
+        pessoas.splice(remover, 1);
+        localStorage.setItem('pessoas', JSON.stringify(pessoas));
+        document.querySelector('.container').innerHTML = '';
+        consultaLocal();
+    });
+
     card.appendChild(titulo);
     card.appendChild(img);
     card.appendChild(mail);
-
+    card.appendChild(lixeira)
     container.appendChild(card);
-    /* -------------------------------- Tarefa 1 -------------------------------- */
-    // Aqui devem desenvolver uma função que seja exibida na tela:
-    // a foto, o nome completo do usuário e o e-mail.
-    // Isto deve ser baseado nas informações que obtemos da API e inseridas no HTML.
 }
-
-
-/* --------------------------- Tarefa 2 (extra) --------------------------- */
-// Aqui você pode ir para o ponto extra de usar o botão que está comentado no HTML.
-// Você pode descomentar o código no index.html e usar esse botão para executar uma nova solicitação API, sem recarregar a página.
-// Cabe aos desenvolvedores decidirem qual bloco de código deve ser contido dentro de uma função para que ele possa ser executado toda vez que um clique de botão for realizado.
