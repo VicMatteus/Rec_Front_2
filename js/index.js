@@ -13,7 +13,6 @@ function consultar()
         })
         .then(data => {
             data.results.forEach(element => {
-                // console.log(element);
                 localStorage.setItem('pessoas', JSON.stringify(data.results))
                 renderizarDadosUsuario(element);
             });
@@ -28,7 +27,6 @@ function consultaLocal() {
 }
 
 function recarregar() {
-    // localStorage.removeItem('pessoas');
     document.querySelector('.container').innerHTML = '';
     consultar();
 }
@@ -56,7 +54,6 @@ function renderizarDadosUsuario(dados) {
 
     let mail = acoplar('p', email);
     mail.classList.add('mail');
-
 
     let img = document.createElement('img');
     img.setAttribute("src", picture);
