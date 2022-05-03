@@ -55,6 +55,7 @@ function renderizarDadosUsuario(dados) {
     let mail = acoplar('p', email);
     mail.classList.add('mail');
 
+
     let img = document.createElement('img');
     img.setAttribute("src", picture);
     
