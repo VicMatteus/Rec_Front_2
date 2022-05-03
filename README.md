@@ -2,7 +2,7 @@
 ### Instruções e requisitos do entregável
 O tema da aplicação usa API citadas abaixo:
 https://randomuser.me/
-<i>mas poderia usar qualquer uma das seguintes:<br>
+<i><br>Mas poderia usar qualquer uma das seguintes:<br>
 https://pokeapi.co<br>
 https://jsonplaceholder.typicode.com/<br>
 https://thecatapi.com/<br>
