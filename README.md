@@ -3,11 +3,11 @@
 O tema da aplicação usa API citadas abaixo:
 https://randomuser.me/
 <i>mas poderia usar qualquer uma das seguintes:<br>
-https://pokeapi.co
-https://jsonplaceholder.typicode.com/
-https://thecatapi.com/
-https://dog.ceo/dog-api/
-https://fakestoreapi.com/docs
+https://pokeapi.co<br>
+https://jsonplaceholder.typicode.com/<br>
+https://thecatapi.com/<br>
+https://dog.ceo/dog-api/<br>
+https://fakestoreapi.com/docs<br>
 </i>
 
 ✔ 1º Você deve selecionar um endpoint que vai listar vários itens. Um exemplo seria um endpoint onde é listado todos os produtos de uma loja.
