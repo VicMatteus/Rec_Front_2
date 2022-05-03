@@ -1,6 +1,6 @@
 # Avaliação final de front-end 2.
 ### Instruções e requisitos do entregável
-O tema da aplicação usa API citadas abaixo:
+O tema da aplicação usa API citadas abaixo:<br>
 https://randomuser.me/
 <i><br>Mas poderia usar qualquer uma das seguintes:<br>
 https://pokeapi.co<br>
